@@ -746,3 +746,579 @@ for (int i = 1; i <= 5; i++) {
 Loops are foundational in programming — mastering them helps you handle repetition efficiently and write cleaner, more dynamic code.
 
 ---
+## 🔷 Table of Contents
+1. [Pattern 1: Solid Rectangle](#1-pattern-1-solid-rectangle)
+2. [Pattern 2: Hollow Rectangle](#2-pattern-2-hollow-rectangle)
+3. [Pattern 3: Half Pyramid](#3-pattern-3-half-pyramid)
+4. [Pattern 4: Inverted Half Pyramid](#4-pattern-4-inverted-half-pyramid)
+5. [Pattern 5: Inverted Half Pyramid with Spaces](#5-pattern-5-inverted-half-pyramid-with-spaces)
+6. [Pattern 6: Number Half Pyramid](#6-pattern-6-number-half-pyramid)
+7. [Pattern 7: Inverted Number Half Pyramid](#7-pattern-7-inverted-number-half-pyramid)
+8. [Pattern 8: Filled Number Pyramid](#8-pattern-8-filled-number-pyramid)
+9. [Pattern 9: Binary Triangle Pattern](#9-pattern-9-binary-triangle-pattern)
+10. [Homework Problems](#10-homework-problems)
+    - Solid Rhombus
+    - Number Pyramid
+    - Palindromic Number Pyramid
+11. [Additional Solved Problems](#11-additional-solved-problems)
+    - Print Even Numbers till n
+    - Menu-Driven Marks Program
+    - Check if a Number is Prime
+
+---
+
+## 1. Pattern 1: Solid Rectangle
+
+Prints a solid rectangle of stars (`*`) with `n` rows and `m` columns.
+
+### ✅ Code
+```java
+import java.util.*;
+public class Patterns {
+    public static void main(String args[]) {
+        int n = 5; // rows
+        int m = 4; // columns
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+    }
+}
+```
+
+### 💡 Logic
+- Outer loop: runs `n` times (rows)
+- Inner loop: prints `m` stars per row
+
+### 🖨️ Output
+```
+****
+****
+****
+****
+****
+```
+
+---
+
+## 2. Pattern 2: Hollow Rectangle
+
+Prints a rectangle with only border stars (`*`). Interior is empty (space).
+
+### ✅ Code
+```java
+import java.util.*;
+public class Patterns {
+    public static void main(String args[]) {
+        int n = 5; // rows
+        int m = 4; // columns
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (i == 0 || i == n-1 || j == 0 || j == m-1) {
+                    System.out.print("*");
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        }
+    }
+}
+```
+
+### 💡 Logic
+- Print `*` only on:
+  - First row (`i == 0`)
+  - Last row (`i == n-1`)
+  - First column (`j == 0`)
+  - Last column (`j == m-1`)
+- Else print space
+
+### 🖨️ Output
+```
+****
+*  *
+*  *
+*  *
+****
+```
+
+---
+
+## 3. Pattern 3: Half Pyramid
+
+Prints a right-angled triangle where each row has increasing stars.
+
+### ✅ Code
+```java
+import java.util.*;
+public class Patterns {
+    public static void main(String args[]) {
+        int n = 4;
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+    }
+}
+```
+
+### 💡 Logic
+- Row 1 → 1 star
+- Row 2 → 2 stars
+- ...
+- Row i → i stars
+
+### 🖨️ Output
+```
+*
+**
+***
+****
+```
+
+---
+
+## 4. Pattern 4: Inverted Half Pyramid
+
+Inverted version of the half pyramid.
+
+### ✅ Code
+```java
+import java.util.*;
+public class Patterns {
+    public static void main(String args[]) {
+        int n = 4;
+        for (int i = n; i >= 1; i--) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+    }
+}
+```
+
+### 💡 Logic
+- Start from `n` and go down to `1`
+- Each row has decreasing stars
+
+### 🖨️ Output
+```
+****
+***
+**
+*
+```
+
+---
+
+## 5. Pattern 5: Inverted Half Pyramid with Spaces
+
+Adds leading spaces to align stars to the right.
+
+### ✅ Code
+```java
+import java.util.*;
+public class Patterns {
+    public static void main(String args[]) {
+        int n = 4;
+        for (int i = n; i >= 1; i--) {
+            // Print spaces
+            for (int j = 1; j < i; j++) {
+                System.out.print(" ");
+            }
+            // Print stars
+            for (int j = 0; j <= n - i; j++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+    }
+}
+```
+
+### 💡 Logic
+- For row `i`: print `(i-1)` spaces
+- Then print `(n - i + 1)` stars
+
+### 🖨️ Output
+```
+   *
+  **
+ ***
+****
+```
+
+> ✅ This is a **right-aligned triangle**.
+
+---
+
+## 6. Pattern 6: Number Half Pyramid
+
+Each row contains numbers from `1` to `i`.
+
+### ✅ Code
+```java
+import java.util.*;
+public class Patterns {
+    public static void main(String args[]) {
+        int n = 5;
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print(j);
+            }
+            System.out.println();
+        }
+    }
+}
+```
+
+### 🖨️ Output
+```
+1
+12
+123
+1234
+12345
+```
+
+---
+
+## 7. Pattern 7: Inverted Number Half Pyramid
+
+Inverted version of number pyramid.
+
+### ✅ Code
+```java
+import java.util.*;
+public class Patterns {
+    public static void main(String args[]) {
+        int n = 5;
+        for (int i = n; i >= 1; i--) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print(j);
+            }
+            System.out.println();
+        }
+    }
+}
+```
+
+### 🖨️ Output
+```
+12345
+1234
+123
+12
+1
+```
+
+---
+
+## 8. Pattern 8: Filled Number Pyramid (Sequential)
+
+Prints numbers sequentially across rows (1, 2, 3, ...).
+
+### ✅ Code
+```java
+import java.util.*;
+public class Patterns {
+    public static void main(String args[]) {
+        int n = 5;
+        int number = 1;
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print(number + " ");
+                number++;
+            }
+            System.out.println();
+        }
+    }
+}
+```
+
+### 🖨️ Output
+```
+1 
+2 3 
+4 5 6 
+7 8 9 10 
+11 12 13 14 15 
+```
+
+---
+
+## 9. Pattern 9: Binary Triangle Pattern
+
+Alternating `1` and `0` based on `(i + j)` parity.
+
+### ✅ Code
+```java
+import java.util.*;
+public class Patterns {
+    public static void main(String args[]) {
+        int n = 5;
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= i; j++) {
+                if ((i + j) % 2 == 0) {
+                    System.out.print("1 ");
+                } else {
+                    System.out.print("0 ");
+                }
+            }
+            System.out.println();
+        }
+    }
+}
+```
+
+### 💡 Logic
+- If `(i + j)` is **even** → print `1`
+- Else → print `0`
+
+### 🖨️ Output
+```
+1 
+0 1 
+1 0 1 
+0 1 0 1 
+1 0 1 0 1 
+```
+
+---
+
+## 10. Homework Problems
+
+### 🔹 1. Print a Solid Rhombus
+
+Each row starts with spaces and then stars.
+
+#### ✅ Solution
+```java
+import java.util.*;
+public class SolidRhombus {
+    public static void main(String args[]) {
+        int n = 5;
+        for (int i = 1; i <= n; i++) {
+            // Print spaces
+            for (int j = 1; j <= n - i; j++) {
+                System.out.print(" ");
+            }
+            // Print stars
+            for (int j = 1; j <= n; j++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+    }
+}
+```
+
+#### 🖨️ Output
+```
+    *****
+   *****
+  *****
+ *****
+*****
+```
+
+---
+
+### 🔹 2. Print a Number Pyramid
+
+Centered pyramid with numbers.
+
+#### ✅ Solution
+```java
+import java.util.*;
+public class NumberPyramid {
+    public static void main(String args[]) {
+        int n = 5;
+        for (int i = 1; i <= n; i++) {
+            // Spaces
+            for (int j = 1; j <= n - i; j++) {
+                System.out.print(" ");
+            }
+            // Numbers (1 to i)
+            for (int j = 1; j <= i; j++) {
+                System.out.print(i + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+```
+
+#### 🖨️ Output
+```
+    1 
+   2 2 
+  3 3 3 
+ 4 4 4 4 
+5 5 5 5 5 
+```
+
+---
+
+### 🔹 3. Print a Palindromic Number Pyramid
+
+Each row: `i to 1 to i` (mirror pattern)
+
+#### ✅ Solution
+```java
+import java.util.*;
+public class PalindromicPyramid {
+    public static void main(String args[]) {
+        int n = 5;
+        for (int i = 1; i <= n; i++) {
+            // Spaces
+            for (int j = 1; j <= n - i; j++) {
+                System.out.print(" ");
+            }
+            // Descending: i to 1
+            for (int j = i; j >= 1; j--) {
+                System.out.print(j);
+            }
+            // Ascending: 2 to i
+            for (int j = 2; j <= i; j++) {
+                System.out.print(j);
+            }
+            System.out.println();
+        }
+    }
+}
+```
+
+#### 🖨️ Output
+```
+    1
+   212
+  32123
+ 4321234
+543212345
+```
+
+---
+
+## 11. Additional Solved Problems
+
+### 🔹 Problem: Print all even numbers till n
+
+#### ✅ Code
+```java
+public class Solutions {
+    public static void main(String args[]) {
+        int n = 25;
+        for (int i = 1; i <= n; i++) {
+            if (i % 2 == 0) {
+                System.out.println(i);
+            }
+        }
+    }
+}
+```
+
+#### 🖨️ Output
+```
+2
+4
+6
+...
+24
+```
+
+---
+
+### 🔹 Problem: Menu-Driven Marks Program
+
+User enters marks repeatedly. Stops when input = 0.
+
+#### ✅ Code
+```java
+import java.util.*;
+public class Solutions {
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+        int input;
+        do {
+            System.out.print("Enter marks (0-100): ");
+            int marks = sc.nextInt();
+            if (marks >= 90 && marks <= 100) {
+                System.out.println("This is Good");
+            } else if (marks >= 60 && marks <= 89) {
+                System.out.println("This is also Good");
+            } else if (marks >= 0 && marks <= 59) {
+                System.out.println("This is Good as well");
+            } else {
+                System.out.println("Invalid");
+            }
+            System.out.println("Want to continue? (yes=1 / no=0): ");
+            input = sc.nextInt();
+        } while (input == 1);
+    }
+}
+```
+
+> ✅ Uses `do-while` so the user gets at least one chance.
+
+---
+
+### 🔹 Problem: Check if a number is prime
+
+#### ✅ Code
+```java
+import java.util.*;
+public class Solutions {
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int n = sc.nextInt();
+        boolean isPrime = true;
+
+        if (n == 1) {
+            System.out.println("This is neither prime nor composite");
+            return;
+        }
+
+        for (int i = 2; i <= n / 2; i++) {
+            if (n % i == 0) {
+                isPrime = false;
+                break;
+            }
+        }
+
+        if (isPrime) {
+            System.out.println("This is a prime number");
+        } else {
+            System.out.println("This is not a prime number");
+        }
+    }
+}
+```
+
+#### 💡 Logic
+- A number is **prime** if divisible only by `1` and itself.
+- Loop from `2` to `n/2` — if any divisor found, not prime.
+- Special case: `1` is **neither prime nor composite**.
+
+---
+
+## ✅ Summary of Key Concepts
+
+| Concept | Explanation |
+|-------|-------------|
+| **Nested Loops** | Used to print 2D patterns (outer = rows, inner = columns) |
+| **Hollow Patterns** | Use conditions to print only borders |
+| **Spacing** | Use space loops to align patterns |
+| **Number Patterns** | Track row/column index to print numbers |
+| **Binary/Alternating** | Use `(i+j) % 2` for alternating logic |
+| **do-while** | Ensures at least one execution (ideal for menus) |
+| **Prime Check** | Loop from 2 to n/2 and check divisibility |
+
+
